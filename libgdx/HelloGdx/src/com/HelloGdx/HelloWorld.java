@@ -29,13 +29,15 @@ public class HelloWorld implements ApplicationListener {
 	SpriteBatch spriteBatch;
 	Texture texture;
 	BitmapFont font;
+	BitmapFont exFont;
 	Vector2 textPosition = new Vector2(100, 100);
-	Vector2 textDirection = new Vector2(1, 1);
+	Vector2 textDirection = new Vector2(3, 3);
 
 	@Override
 	public void create () {
 		font = new BitmapFont();
 		font.setColor(Color.RED);
+		exFont = new BitmapFont(Gdx.files.internal("bb.fnt"), Gdx.files.internal("bb.png"), false);
 		texture = new Texture(Gdx.files.internal("data/badlogic.jpg"));
 		spriteBatch = new SpriteBatch();
 	}
@@ -73,7 +75,8 @@ public class HelloWorld implements ApplicationListener {
 		spriteBatch.setColor(Color.WHITE);
 		spriteBatch.draw(texture, centerX - texture.getWidth() / 2, centerY - texture.getHeight() / 2, 0, 0, texture.getWidth(),
 			texture.getHeight());
-		font.draw(spriteBatch, "Hello World!", (int)textPosition.x, (int)textPosition.y);
+		font.draw(spriteBatch, "Hello world!", (int)textPosition.x, (int)textPosition.y);
+		exFont.draw(spriteBatch, "你我一起快乐!", (int)textPosition.x-10, (int)textPosition.y-10);
 		spriteBatch.end();
 	}
 
